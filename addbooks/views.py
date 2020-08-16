@@ -11,9 +11,8 @@ def addbooks(request):
         form = BookForm(request.POST, request.FILES)
 
         if form.is_valid():
-            obj = form.save(commit=False)
-            obj.user = request.user
-            obj.save()
+            form.instance.book_user = request.user
+            form.save()
 
             return redirect("/")
     else:
