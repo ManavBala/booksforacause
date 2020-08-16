@@ -10,6 +10,6 @@ import pytz
 def place_order(response, book_id):
 
     book = Books.objects.get(pk=book_id)
-    new_order = Orders(books=book, user=response.user, date_time=datetime.now(pytz.timezone('Etc/GMT+4')))
+    new_order = Orders(books=book, user=response.user)
     new_order.save()
     return render(response, "orders/place_order.html")

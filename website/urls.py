@@ -33,4 +33,4 @@ urlpatterns = [
     path("books/<int:id>", view_books),
     path("contact_dev", views.contact_dev),
     path("place_order/<int:book_id>", place_order)
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
