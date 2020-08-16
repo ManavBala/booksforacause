@@ -1,0 +1,28 @@
+{% extends 'Home/base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+
+    <div class="media">
+        <img class="align-self-center mr-3" src="{{posts.book_img.url}}" style="width:600px;height:600px  ;margin-left:10px;">
+        <div>
+            <p style="position:absolute;top:150px;left:850px;font-size:50px;">Title: {{posts.title}}</p>
+            <p style="position:absolute;top:230px;left:850px;font-size:50px;">Author(s): {{posts.book_auth}}</p>
+            <p style="position:absolute;top:320px;left:850px;font-size:50px;">Condition: {{posts.book_cond}}</p>
+            <p style="position:absolute;top:410px;left:850px;font-size:50px;">Price: {{posts.book_price}}</p>
+            <button role="button" class="btn btn-outline-dark btn-lg" id="someButton" href="#" aria-pressed="true" style="position:absolute;left:850px; top:510px;font-size:30px;" onclick="document.getElementById('appearingAlert').style.display = 'block';">Order Book</button>
+
+
+
+        </div>
+
+    <div class="alert alert-info" role="alert" id="appearingAlert" style="display: none">
+        Confirm your order <a href="/place_order/{{posts.id}}" class="alert-link">here</a>
+   </div>
+    </div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,69 @@
+{% extends 'Home/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<h1 style="padding-top:5px; text-align: center; margin-bottom: 50px;">Recent Books</h1>
+{% if posts %}
+<div class="container-fluid mainContainer">
+
+  <div class="row" style="padding-left:20px; ;">
+     {% for posts in posts.object_list %}
+    <div class="col-6 col-md-2" style="margin-right: 60px;">
+      <div class="card border-secondary" style="width: 20rem; ">
+        <img src="{{posts.book_img.url}}" class="card-img-top" style="height: 200px; width: 19.5rem;">
+          <div class="card-body">
+        <h5 class="card-title">{{posts.title}}</h5>
+        <p class="card-text" style="font-size:20px">Author: {{posts.book_auth}}</p>
+        <p class="card-text" style="font-size:20px">Publisher: {{posts.book_pub}}</p>
+        <p class="card-text" style="font-size:20px">Uploaded By: {{posts.book_user.username}}</p>
+        <p class="card-text" style="font-size:20px">Price: {{posts.book_price}}</p>
+    <a href="/books/{{posts.id}}" class="btn btn-primary">View Book</a>
+          </div>
+</div>
+
+    </div>
+
+
+
+
+
+
+     {% endfor %}
+  </div>
+    {% else %}
+    <p class="text-center">Sorry but none of the books match your search query</p>
+    {% endif %}
+
+
+
+
+
+</div>
+
+    <ul class="pagination justify-content-center fixed-bottom" >
+        {% if posts.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{posts.previous_page_number}}">
+            <span aria-hidden="true">&laquo;</span>
+        </a></li>
+        {% endif %}
+        {% for pg in posts.paginator.page_range %}
+            {% if posts.number == pg %}
+                <li class="active page-item"><a class="page-link" href="?page={{pg}}">{{pg}}</a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{pg}}">{{pg}}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if posts.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{posts.next_page_number}}">
+            <span aria-hidden="true">&raquo;</span>
+        </a></li>
+        {% endif %}
+    </ul>
+
+
+
+
+
+
+{% endblock %}
