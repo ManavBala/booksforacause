@@ -1,0 +1,33 @@
+{% extends 'Home/base.html' %}
+
+{% block title %} {% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="media">
+        <img class="align-self-center mr-3" src="{{posts.books.book_img.url}}" style="width:600px;height:600px  ;margin-left:10px;">
+        <div>
+            <p style="position:absolute;top:150px;left:850px;font-size:50px;">Title: {{posts.books.title}}</p>
+            <p style="position:absolute;top:230px;left:850px;font-size:50px;">Author(s): {{posts.books.book_auth}}</p>
+            <p style="position:absolute;top:320px;left:850px;font-size:50px;">Condition: {{posts.books.book_cond}}</p>
+            <p style="position:absolute;top:410px;left:850px;font-size:50px;">Price: {{posts.books.book_price}}</p>
+            <button role="button" class="btn btn-primary btn-outline-dark btn-lg" id="someButton" href="#" aria-pressed="true"  onclick="document.getElementById('appearingAlert2').style.display = 'block';">Order Received</button>
+            <button role="button" class="btn btn-danger btn-outline-dark btn-lg" href="#" aria-pressed="true"  onclick="document.getElementById('appearingAlert').style.display = 'block';">Cancel Order</button>
+
+
+        </div>
+
+
+    </div>
+<div class="alert alert-danger" role="alert" id="appearingAlert" style="display: none; width:50%; margin:auto;">
+        If you would like to go ahead with the cancellation process click  <a href="{% url 'cancel' posts.id %}" class="alert-link">here</a>
+   </div>
+
+<div class="alert alert-warning" role="alert" id="appearingAlert2" style="display: none; width:50%; margin:auto;">
+        If you are sure you have received this order please click <a href="{% url 'received' posts.id %}" class="alert-link">here</a>
+   </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'Home/base.html' %}
+
+
+{% block content %}
+<div class="container">
+{% if user.is_superuser %}
+
+<div class="row" style="padding-left:20px; ;">
+{% if posts %}
+
+     {% for posts in posts %}
+
+    <div class="card mb-3" style="margin-bottom: 60px; margin-right: 15px;">
+      <div class="card border-secondary" style="width: 20rem; ">
+        <img id = "bookimg" src="{{posts.book_img.url}}" class="card-img-top" style="height: 200px; width: 19.5rem; ">
+          <div class="card-body">
+
+        <h5 class="card-title">Title: {{posts.title}}</h5>
+        <p class="card-text" style="font-size:20px">Author: {{posts.book_auth}}</p>
+        <p class="card-text" style="font-size:20px">Uploaded By: {{posts.book_user.username}}</p>
+        <p class="card-text" style="font-size:20px">Price: {{posts.book_price}}</p>
+        <a href="" class="btn btn-success">Approve</a>
+        <a href="" class="btn btn-danger">Decline</a>
+        <a href="" class="btn btn-secondary" onclick="document.getElementById('bookimg').style.display='block';">View Image of Book</a>
+
+
+          </div>
+      </div>
+
+    </div>
+     {% endfor %}
+  </div>
+{% else %}
+<p class="text-center">There are no books to approve</p>
+
+
+{% endif %}
+
+{% else %}
+<div class="alert alert-danger text-center" role="alert" style="margin:auto; width:50%;">
+  You do not have the permissions required to view this page.
+</div>
+
+</div>
+{% endif %}
+
+{% endblock %}
+
