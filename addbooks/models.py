@@ -11,6 +11,7 @@ class Books(models.Model):
     book_cond = models.CharField(max_length=1)
     book_user = models.ForeignKey(User, on_delete=models.CASCADE)
     book_price = models.IntegerField()
+    approved = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

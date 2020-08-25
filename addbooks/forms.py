@@ -8,5 +8,5 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Books
         fields = '__all__'
-        exclude = ['book_user']
+        exclude = ['book_user', 'approved']
 

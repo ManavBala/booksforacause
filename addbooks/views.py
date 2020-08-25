@@ -12,6 +12,7 @@ def addbooks(request):
 
         if form.is_valid():
             form.instance.book_user = request.user
+
             form.save()
 
             return redirect("/")

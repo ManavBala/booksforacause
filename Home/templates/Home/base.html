@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>New Page</title>
 </head>
@@ -19,24 +21,22 @@
             <a class="nav-link" style="color: white;" href="/">Recent Books</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" style="color: white;" href="#">Contact the Developer</a>
+            <a class="nav-link" style="color: white;" href="contact_dev">Contact the Developer</a>
           </li>
+
           <li class="nav-item active">
-            <a class="nav-link" style="color: white;" href="#">Connect with Students</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" style="color: white;" href="#">My Orders</a>
+            <a class="nav-link" style="color: white;" href="{% url 'orders' %}">My Orders</a>
           </li>
             <li class="nav-item active">
             <a class="nav-link" href="#" style="color: white;">Site Guide</a>
           </li>
             <li class="nav-item active">
-            <a class="nav-link" href="#" style="color: white;">Request to Add Book</a>
+            <a class="nav-link" href="{% url 'addbooks' %}" style="color: white;">Request to Add Book</a>
           </li>
         </ul>
             <form class="form-inline my-lg-0" method="GET" >
                 <input class="form-control mr-sm-2 search-bar-float-right" name="q" type="search" placeholder="Search" value="{{request.GET.q}}" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" id="myButton" type="submit">Search</button>
             </form>
       </div>
     </nav>
@@ -46,8 +46,11 @@
 
 
     {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/test.js' %}"></script>
+
 </body>
 </html>

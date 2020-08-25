@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'register',
     'crispy_forms',
     'orders',
+    'dev'
 
 ]
 
@@ -123,6 +124,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -133,3 +137,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
 
 SESSIONS_COOKIE_AGE = 10
 SESSION_SAVE_EVERY_REQUEST = True
+
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_HOST_USER = "manav.bala1404@gmail.com"
+
+EMAIL_HOST_PASSWORD = "Vidya1006"
+
+EMAIL_PORT = 587
+
+
+

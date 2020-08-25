@@ -23,14 +23,21 @@ from django.conf.urls.static import static
 from Home.views import view_books
 from orders.views import place_order
 from Home import views
+from orders.views import my_orders, order_page, order_cancel, order_recieved
+from dev.views import dev
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path("", include("django.contrib.auth.urls")),
     path("register/", register),
-    path("addbooks", addbooks),
+    path("addbooks/", addbooks, name="addbooks"),
     path("books/<int:id>", view_books),
-    path("contact_dev", views.contact_dev),
-    path("place_order/<int:book_id>", place_order)
+    path("contact_dev/", views.contact_dev, "contact_dev"),
+    path("place_order/<int:book_id>", place_order),
+    path("my_orders/", my_orders,name="orders"),
+    path("order_page/<int:id>", order_page, name="order_page"),
+    path("order_cancel/<int:id>", order_cancel, name="cancel"),
+    path("order_recieved/<int:id>", order_recieved, name="received"),
+    path("dev/", dev, name="dev_page")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
